@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-
+    
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -23,22 +23,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,UINaviga
             picker.delegate = self
             self.present(picker, animated: true)
         }
-        
-        func imagePickerController(_picker: UIImagePickerController,
-                                   didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
-            
-            let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-            self.imageView.image = image
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-            self.dismiss(animated: true)
-        }
     }
-    
+    func ImagePickerController(_picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        self.imageView.image = image
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        self.dismiss(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
+    
 }
 
